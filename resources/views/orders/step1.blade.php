@@ -5,11 +5,18 @@
     <p>{{ __('Pasirinkite mikrorajonus, kuriuose vyks platinimas') }}</p>
     <form method="post" action="{{ route('orders.post_to_step2') }}">
         @csrf
-        @foreach($districts as $district)
-            <label>
-                <input type="checkbox" name="districts[]" value="{{ $district->id }}"/> {{ $district->name }}
+        <div class="">
+            <label class="font-weight-bold">
+                <input type="checkbox" name="select_all_districts" class="js-select-all-districts"> {{ __('Pažymėti visus rajonus') }}
             </label>
-        @endforeach
+        </div>
+        <div class="row">
+            @foreach($districts as $district)
+                <label class="col-xl-3">
+                    <input type="checkbox" name="districts[]" value="{{ $district->id }}" class="js-district-to-select" /> {{ $district->name }}
+                </label>
+            @endforeach
+        </div>
         <div class="text-right">
             <button type="submit" class="btn btn-primary">
                 {{ __('Toliau') }}
