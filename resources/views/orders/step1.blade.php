@@ -3,6 +3,7 @@
 @section('main-content')
     <h1>{{ __('Mikrorajonas') }}</h1>
     <p>{{ __('Pasirinkite mikrorajonus, kuriuose vyks platinimas') }}</p>
+    @include('partials.messages')
     <form method="post" action="{{ route('orders.post_to_step2') }}">
         @csrf
         <div class="">
