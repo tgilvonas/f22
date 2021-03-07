@@ -11,17 +11,18 @@ class OrdersController extends Controller
     public function step1()
     {
         return view('orders.step1', [
-            'districts' => District::all(),
+            'districts' => District::orderBy('name', 'asc')->get(),
         ]);
     }
 
     public function postToStep2(RequestToStep2 $request)
     {
-        dd('Here should be order processing and redirect to step2');
+        session()->put('order.districts', $request->get('districts', []));
+        return redirect()->route('orders.step2');
     }
 
     public function step2()
     {
-
+        return view('orders.step2');
     }
 }
