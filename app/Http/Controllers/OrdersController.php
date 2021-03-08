@@ -30,4 +30,14 @@ class OrdersController extends Controller
             'printFormats' => PrintFormat::all(),
         ]);
     }
+
+    public function postToStep3()
+    {
+        dd('Here should be step 3');
+    }
+
+    public function step3()
+    {
+
+    }
 }

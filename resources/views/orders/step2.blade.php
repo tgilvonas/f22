@@ -4,7 +4,7 @@
     <h1>{{ __('Platinamas leidinys') }}</h1>
     <p>{{ __('Pasirinkite variantą, kuris labiausiai atitiks Jūsų poreikius') }}</p>
     @include('partials.messages')
-    <form method="post" action="{{ route('orders.post_to_step2') }}">
+    <form method="post" action="{{ route('orders.post_to_step3') }}">
         @csrf
         <div class="d-none">
             @foreach($orderTypes as $orderType)
