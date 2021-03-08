@@ -1,13 +1,17 @@
-.print-type-box {
+.print-type-box, .print-format-box {
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #f3f3f3;
     border-radius: 10px;
+    cursor: pointer;
 }
-.print-type-box.selected {
+.print-format-box {
+    border-radius: 3px;
+    margin-top: 10px;
+}
+.print-type-box.selected, .print-format-box.selected {
     border: 1px solid #007bff;
 }
 .print-type-box .description {
     margin: 10px 0;
 }
-
