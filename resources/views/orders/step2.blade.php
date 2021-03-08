@@ -6,7 +6,7 @@
     @include('partials.messages')
     <form method="post" action="{{ route('orders.post_to_step2') }}">
         @csrf
-        <div>
+        <div class="d-none">
             @foreach($orderTypes as $orderType)
                 <div><input type="radio" name="order_type" value="{{ $orderType->id }}" class="js-order-type-input" /></div>
             @endforeach
@@ -14,7 +14,7 @@
         <div class="row">
             @foreach($orderTypes as $orderType)
                 <div class="col-xl-4">
-                    <div class="print-type-box js-order-type-box" data-id="{{ $orderType->id }}">
+                    <div class="order-type-box js-order-type-box">
                         <div class="title text-center text-uppercase font-weight-bold">
                             {{ $orderType->title }}
                         </div>
@@ -22,13 +22,15 @@
                             {{ $orderType->description }}
                         </div>
                         <div class="btn-wrapper text-center">
-                            <button type="button" class="js-select-print_type btn btn-primary text-uppercase font-weight-bold">{{ __('Renkuosi') }}</button>
+                            <button type="button" class="js-select-order-type btn btn-primary text-uppercase font-weight-bold" data-id="{{ $orderType->id }}">
+                                {{ __('Renkuosi') }}
+                            </button>
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
-        <div>
+        <div class="d-none">
             @foreach($printFormats as $printFormat)
                 <div><input type="radio" name="print_format" value="{{ $printFormat->id }}" class="js-print-format-input" /></div>
             @endforeach

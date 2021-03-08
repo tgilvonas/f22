@@ -33,4 +33,17 @@ $(document).ready(function(){
     $('.js-district-to-select').change(function(){
         $('.js-select-all-districts').prop('checked', false);
     });
+
+    $('.js-select-order-type').click(function(){
+        $('.js-order-type-box').removeClass('selected');
+        $(this).parents('.js-order-type-box').addClass('selected');
+        $('.js-order-type-input').prop('checked', false);
+        $('.js-order-type-input[value="'+$(this).attr('data-id')+'"]').prop('checked', true);
+    });
+    $('.js-print-format-box').click(function(){
+        $('.js-print-format-box').removeClass('selected');
+        $(this).addClass('selected');
+        $('.js-print-format-input').prop('checked', false);
+        $('.js-print-format-input[value="'+$(this).attr('data-id')+'"]').prop('checked', true);
+    });
 });
