@@ -34,6 +34,8 @@ $(document).ready(function(){
         $('.js-select-all-districts').prop('checked', false);
     });
 
+    $('.js-order-type-box[data-id="'+$('.js-order-type-input:checked').val()+'"]').addClass('selected');
+    $('.js-print-format-box[data-id="'+$('.js-print-format-input:checked').val()+'"]').addClass('selected');
     $('.js-select-order-type').click(function(){
         $('.js-order-type-box').removeClass('selected');
         $(this).parents('.js-order-type-box').addClass('selected');
