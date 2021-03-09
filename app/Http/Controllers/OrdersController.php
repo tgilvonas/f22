@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RequestToStep2;
+use App\Http\Requests\RequestToStep3;
 use App\Models\District;
 use App\Models\OrderType;
 use App\Models\PrintFormat;
@@ -12,6 +13,7 @@ class OrdersController extends Controller
 {
     public function step1()
     {
+        session()->forget('order');
         return view('orders.step1', [
             'districts' => District::orderBy('name', 'asc')->get(),
         ]);
@@ -31,13 +33,15 @@ class OrdersController extends Controller
         ]);
     }
 
-    public function postToStep3()
+    public function postToStep3(RequestToStep3 $request)
     {
-        dd('Here should be step 3');
+        session()->put('order.order_type', $request->get('order_type', null));
+        session()->put('order.print_format', $request->get('print_format', null));
+        return redirect()->route('orders.step3');
     }
 
     public function step3()
     {
-
+        return view('orders.step3');
     }
 }

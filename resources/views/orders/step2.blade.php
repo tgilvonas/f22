@@ -8,7 +8,7 @@
         @csrf
         <div class="d-none">
             @foreach($orderTypes as $orderType)
-                <div><input type="radio" name="order_type" value="{{ $orderType->id }}" class="js-order-type-input" /></div>
+                <div><input type="radio" name="order_type" value="{{ $orderType->id }}" @if($orderType->id==old('order_type')) checked @endif class="js-order-type-input" /></div>
             @endforeach
         </div>
         <div class="row">
@@ -32,7 +32,9 @@
         </div>
         <div class="d-none">
             @foreach($printFormats as $printFormat)
-                <div><input type="radio" name="print_format" value="{{ $printFormat->id }}" class="js-print-format-input" /></div>
+                <div>
+                    <input type="radio" name="print_format" value="{{ $printFormat->id }}" @if($printFormat->id==old('print_format')) checked @endif class="js-print-format-input" />
+                </div>
             @endforeach
         </div>
         <div class="row">
