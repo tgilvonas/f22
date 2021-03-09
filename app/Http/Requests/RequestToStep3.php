@@ -28,4 +28,14 @@ class RequestToStep3 extends FormRequest
             'print_format' => 'required|numeric',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'order_type.required' => __('Jūs turite pasirinkti užsakymo tipą'),
+            'order_type.numeric' => __('Jūs turite pasirinkti užsakymo tipą'),
+            'print_format.required' => __('Jūs turite pasirinkti skrajutės formatą'),
+            'print_format.numeric' => __('Jūs turite pasirinkti skrajutės formatą'),
+        ];
+    }
 }
