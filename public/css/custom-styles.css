@@ -13,3 +13,8 @@
 .order-type-box .description {
     margin: 10px 0;
 }
+.img-width-auto {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+}

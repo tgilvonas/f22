@@ -59,6 +59,16 @@ class OrdersController extends Controller
 
     public function step3()
     {
-        return view('orders.step3');
+        $districts = District::whereIn('id', session()->get('order.districts'))->get();
+
+        $sumOfPostalBoxes = 0;
+        foreach ($districts as $district) {
+            $sumOfPostalBoxes = $sumOfPostalBoxes + $district->population;
+        }
+
+        return view('orders.step3', [
+            'sumOfDistricts' => count($districts),
+            'sumOfPostalBoxes' => $sumOfPostalBoxes,
+        ]);
     }
 }
