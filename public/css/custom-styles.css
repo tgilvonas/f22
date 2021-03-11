@@ -7,10 +7,8 @@
 .print-format-box {
     border-radius: 3px;
     margin-top: 10px;
+    background-color: #fff;
     cursor: pointer;
-}
-.order-type-box.selected, .print-format-box.selected {
-    border: 1px solid #007bff;
 }
 .order-type-box .description {
     margin: 10px 0;

@@ -4,7 +4,7 @@
     <h1>{{ __('Mikrorajonas') }}</h1>
     <p>{{ __('Pasirinkite mikrorajonus, kuriuose vyks platinimas') }}</p>
     @include('partials.messages')
-    <form method="post" action="{{ route('orders.post_to_step2') }}">
+    <form method="post" action="{{ route('orders.post_after_step_1') }}">
         @csrf
         <div class="">
             <label class="font-weight-bold">

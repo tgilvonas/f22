@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',  [\App\Http\Controllers\OrdersController::class, 'step1'])->name('orders.step1');
-Route::post('/step2',  [\App\Http\Controllers\OrdersController::class, 'postToStep2'])->name('orders.post_to_step2');
+Route::post('/after-step-1',  [\App\Http\Controllers\OrdersController::class, 'postAfterStep1'])->name('orders.post_after_step_1');
 Route::get('/step2',  [\App\Http\Controllers\OrdersController::class, 'step2'])->name('orders.step2');
-Route::post('/step3',  [\App\Http\Controllers\OrdersController::class, 'postToStep3'])->name('orders.post_to_step3');
+Route::post('/after-step-2',  [\App\Http\Controllers\OrdersController::class, 'postAfterStep2'])->name('orders.post_after_step_2');
+Route::get('/step2-1', [\App\Http\Controllers\OrdersController::class, 'step2Point1'])->name('orders.step2_point_1');
+Route::post('/after-step-2-point-1',  [\App\Http\Controllers\OrdersController::class, 'postAfterStep2Point1'])->name('orders.post_after_step_2_point_1');
 Route::get('/step3',  [\App\Http\Controllers\OrdersController::class, 'step3'])->name('orders.step3');

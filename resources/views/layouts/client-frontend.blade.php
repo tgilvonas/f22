@@ -16,7 +16,7 @@
     <script type="text/javascript" src="/js/client-frontend.js"></script>
 </head>
 <body class="antialiased">
-<div class="container">
+<div class="container mt-3">
     @yield('main-content')
 </div>
 </body>

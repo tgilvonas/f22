@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RequestToStep3 extends FormRequest
+class RequestAfterStep2Point1 extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,6 @@ class RequestToStep3 extends FormRequest
     public function rules()
     {
         return [
-            'order_type' => 'required|numeric',
             'print_format' => 'required|numeric',
         ];
     }
@@ -32,8 +31,6 @@ class RequestToStep3 extends FormRequest
     public function messages()
     {
         return [
-            'order_type.required' => __('Jūs turite pasirinkti užsakymo tipą'),
-            'order_type.numeric' => __('Jūs turite pasirinkti užsakymo tipą'),
             'print_format.required' => __('Jūs turite pasirinkti skrajutės formatą'),
             'print_format.numeric' => __('Jūs turite pasirinkti skrajutės formatą'),
         ];

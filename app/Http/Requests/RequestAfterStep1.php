@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RequestToStep2 extends FormRequest
+class RequestAfterStep1 extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,6 +28,11 @@ class RequestToStep2 extends FormRequest
         ];
     }
 
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
     public function messages()
     {
         return [
