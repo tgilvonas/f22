@@ -16,7 +16,12 @@
     <script type="text/javascript" src="/js/client-frontend.js"></script>
 </head>
 <body class="antialiased">
-<div class="container mt-3">
+<div class="container">
+    <div class="logo-wrapper pt-3 pb-3">
+        <a href="/">
+            <img src="/img/logos/adresuota-logo.webp" alt="" />
+        </a>
+    </div>
     @yield('main-content')
 </div>
 </body>

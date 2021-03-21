@@ -1,3 +1,6 @@
+.logo-wrapper img {
+    max-width: 200px;
+}
 .order-type-box, .print-format-box {
     padding: 10px;
     margin-bottom: 10px;
