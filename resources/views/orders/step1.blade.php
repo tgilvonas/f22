@@ -1,6 +1,9 @@
 @extends('layouts.client-frontend')
 
 @section('main-content')
+    <script type="text/javascript">
+        districts = {!! json_encode($districts) !!};
+    </script>
     <h1>{{ __('Mikrorajonas') }}</h1>
     <p>{{ __('Pasirinkite mikrorajonus, kuriuose vyks platinimas') }}</p>
     @include('partials.messages')

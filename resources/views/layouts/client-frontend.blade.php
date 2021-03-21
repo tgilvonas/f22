@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>F22</title>
+    <title>Adresouta.lt</title>
 
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 
