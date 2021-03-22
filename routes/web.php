@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',  [\App\Http\Controllers\OrdersController::class, 'step1'])->name('orders.step1');
+Route::get('/get-list-of-districts',  [\App\Http\Controllers\OrdersController::class, 'getListOfDistricts'])->name('orders.get_list_of_districts');
 Route::post('/after-step-1',  [\App\Http\Controllers\OrdersController::class, 'postAfterStep1'])->name('orders.post_after_step_1');
 Route::get('/step2',  [\App\Http\Controllers\OrdersController::class, 'step2'])->name('orders.step2');
 Route::post('/after-step-2',  [\App\Http\Controllers\OrdersController::class, 'postAfterStep2'])->name('orders.post_after_step_2');

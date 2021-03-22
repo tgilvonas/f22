@@ -15,9 +15,20 @@ class OrdersController extends Controller
     public function step1()
     {
         session()->forget('order');
-        return view('orders.step1', [
-            'districts' => District::orderBy('name', 'asc')->get(),
-        ]);
+        return view('orders.step1');
+    }
+
+    public function getListOfDistricts()
+    {
+        $searchText = request()->get('search_text', '');
+
+        $districtsQueryObject = District::orderBy('name', 'asc');
+
+        if (!empty($searchText)) {
+            $districtsQueryObject->where('name', 'like', '%'.$searchText.'%');
+        }
+
+        return $districtsQueryObject->get();
     }
 
     public function postAfterStep1(RequestAfterStep1 $request)
