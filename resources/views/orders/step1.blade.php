@@ -33,11 +33,20 @@
             </div>
             <div class="wrapper-with-loader">
                 <div class="row">
+                    <label class="" v-for="districtInSelection in districtsInSelection" v-text="districtInSelection.name">
+                        <input type="checkbox" v-model="districtInSelection.checked">
+                        <span v-text="districtInSelection.name"></span>
+                    </label>
+                </div>
+                <div class="row">
                     <div v-for="district in districts" class="col-xl-3">
                         <label>
-                            <input type="checkbox" v-model="district.selected"> <span v-text="district.name"></span>
+                            <input type="checkbox" v-model="district.checked" @change="setDistrictsInSelection(district)"> <span v-text="district.name"></span>
                         </label>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-12">Pasirinktų pašto dėžučių suma: <span v-text="sumOfAuditoriums"></span></div>
                 </div>
                 <div class="loader-overlay" v-if="loading"></div>
             </div>
@@ -55,6 +64,7 @@
             data: {
                 districts: [],
                 districtsInSelection: [],
+                sumOfAuditoriums: 0,
                 search_text: '',
                 loading: true
             },
@@ -81,6 +91,9 @@
                     delayTimer = setTimeout(function() {
                         self.getListOfDistricts();
                     }, 1000);
+                },
+                setDistrictsInSelection: function (district) {
+
                 }
             }
         });
