@@ -71,7 +71,7 @@
                         }
                     }).then(function(response){
                         self.loading = false;
-                        self.districts = response;
+                        self.districts = response.data;
                     });
                 },
                 performSearch: function() {
