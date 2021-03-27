@@ -35,7 +35,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <label class="btn btn-sm btn-warning mr-1" v-for="districtInSelection in districtsInSelection">
-                            <input type="checkbox" v-model="districtInSelection.selected" name="selected_districts" :value="districtInSelection.id">
+                            <input type="checkbox" v-model="districtInSelection.selected" name="selected_districts[]" :value="districtInSelection.id" @change="calculateSumOfAuditoriums">
                             <span v-text="districtInSelection.name"></span>
                         </label>
                         <button class="btn btn-sm btn-danger" type="button" v-if="districtsInSelection.length > 0" @click="clearAllDistrictsInSelection">Išvalyti pasirinkimus</button>
@@ -98,21 +98,38 @@
                     }, 1000);
                 },
                 setDistrictsInSelection: function (district) {
-
+                    for (let i=0; i<this.districts.length; i++) {
+                        if (this.districts[i].name == district.name) {
+                            this.districtsInSelection.push(district);
+                        }
+                    }
+                    this.calculateSumOfAuditoriums();
                 },
                 setAllDistrictsInSelection: function() {
                     if (this.allDistrictsChecked) {
                         this.districtsInSelection = this.districts;
+                        for (let i=0; i<this.districtsInSelection.length; i++) {
+                            this.districtsInSelection[i].selected = true;
+                        }
+                        this.calculateSumOfAuditoriums();
                     } else {
                         this.districtsInSelection = [];
+                        this.getListOfDistricts();
+                        this.sumOfAuditoriums = 0;
                     }
-                    this.calculateSumOfAuditoriums();
                 },
                 clearAllDistrictsInSelection: function () {
-
+                    this.districtsInSelection = [];
+                    this.allDistrictsChecked = false;
+                    this.getListOfDistricts();
+                    this.sumOfAuditoriums = 0;
                 },
                 calculateSumOfAuditoriums: function () {
-
+                    for (let i=0; i<this.districtsInSelection.length; i++) {
+                        if (this.districtsInSelection[i].selected) {
+                            this.sumOfAuditoriums = this.sumOfAuditoriums + this.districtsInSelection[i].population;
+                        }
+                    }
                 }
             }
         });
