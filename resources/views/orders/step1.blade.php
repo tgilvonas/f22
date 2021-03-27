@@ -9,7 +9,7 @@
         <div id="districts_form_inner">
 
         </div>
-        <div class="text-right">
+        <div class="text-right pb-3">
             <button type="submit" class="btn btn-primary">
                 {{ __('Toliau') }}
             </button>
@@ -28,25 +28,29 @@
             </div>
             <div class="">
                 <label class="font-weight-bold">
-                    <input type="checkbox" name="select_all_districts"> Pažymėti visus rajonus
+                    <input type="checkbox" v-model="allDistrictsChecked" @change="setAllDistrictsInSelection"> Pažymėti visus rajonus
                 </label>
             </div>
             <div class="wrapper-with-loader">
                 <div class="row">
-                    <label class="" v-for="districtInSelection in districtsInSelection">
-                        <input type="checkbox" v-model="districtInSelection.checked">
-                        <span v-text="districtInSelection.name"></span>
-                    </label>
+                    <div class="col-xl-12">
+                        <label class="btn btn-sm btn-warning mr-1" v-for="districtInSelection in districtsInSelection">
+                            <input type="checkbox" v-model="districtInSelection.selected" name="selected_districts" :value="districtInSelection.id">
+                            <span v-text="districtInSelection.name"></span>
+                        </label>
+                        <button class="btn btn-sm btn-danger" type="button" v-if="districtsInSelection.length > 0" @click="clearAllDistrictsInSelection">Išvalyti pasirinkimus</button>
+                    </div>
                 </div>
+                <hr v-if="districtsInSelection.length > 0"/>
                 <div class="row">
-                    <div v-for="district in districts" class="col-xl-3">
+                    <div v-for="district in districts" class="col-xl-3" v-show="!district.selected">
                         <label>
-                            <input type="checkbox" v-model="district.checked" @change="setDistrictsInSelection(district)"> <span v-text="district.name"></span>
+                            <input type="checkbox" v-model="district.selected" @change="setDistrictsInSelection(district)"> <span v-text="district.name"></span>
                         </label>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xl-12">Pasirinktų auditorijų suma: <span v-text="sumOfAuditoriums"></span></div>
+                    <div class="col-xl-12 font-weight-bold">Pasirinktų auditorijų suma: <span v-text="sumOfAuditoriums"></span></div>
                 </div>
                 <div class="loader-overlay" v-if="loading"></div>
             </div>
@@ -64,6 +68,7 @@
             data: {
                 districts: [],
                 districtsInSelection: [],
+                allDistrictsChecked: false,
                 sumOfAuditoriums: 0,
                 search_text: '',
                 loading: true
@@ -93,6 +98,20 @@
                     }, 1000);
                 },
                 setDistrictsInSelection: function (district) {
+
+                },
+                setAllDistrictsInSelection: function() {
+                    if (this.allDistrictsChecked) {
+                        this.districtsInSelection = this.districts;
+                    } else {
+                        this.districtsInSelection = [];
+                    }
+                    this.calculateSumOfAuditoriums();
+                },
+                clearAllDistrictsInSelection: function () {
+
+                },
+                calculateSumOfAuditoriums: function () {
 
                 }
             }
