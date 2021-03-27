@@ -33,7 +33,7 @@
             </div>
             <div class="wrapper-with-loader">
                 <div class="row">
-                    <label class="" v-for="districtInSelection in districtsInSelection" v-text="districtInSelection.name">
+                    <label class="" v-for="districtInSelection in districtsInSelection">
                         <input type="checkbox" v-model="districtInSelection.checked">
                         <span v-text="districtInSelection.name"></span>
                     </label>
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xl-12">Pasirinktų pašto dėžučių suma: <span v-text="sumOfAuditoriums"></span></div>
+                    <div class="col-xl-12">Pasirinktų auditorijų suma: <span v-text="sumOfAuditoriums"></span></div>
                 </div>
                 <div class="loader-overlay" v-if="loading"></div>
             </div>
