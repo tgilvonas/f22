@@ -35,7 +35,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <label class="btn btn-sm btn-warning mr-1" v-for="districtInSelection in districtsInSelection">
-                            <input type="checkbox" v-model="districtInSelection.selected" name="selected_districts[]" :value="districtInSelection.id" @change="calculateSumOfAuditoriums">
+                            <input type="checkbox" v-model="districtInSelection.selected" name="districts[]" :value="districtInSelection.id" @change="unsetDistrictInSelection(districtInSelection)">
                             <span v-text="districtInSelection.name"></span>
                         </label>
                         <button class="btn btn-sm btn-danger" type="button" v-if="districtsInSelection.length > 0" @click="clearAllDistrictsInSelection">Išvalyti pasirinkimus</button>
@@ -105,6 +105,15 @@
                     }
                     this.calculateSumOfAuditoriums();
                 },
+                unsetDistrictInSelection: function (district) {
+                    for (let i=0; i<this.districtsInSelection.length; i++) {
+                        if (this.districtsInSelection[i].name == district.name) {
+                            this.districtsInSelection.splice(i, 1);
+                            this.calculateSumOfAuditoriums();
+                            return true;
+                        }
+                    }
+                },
                 setAllDistrictsInSelection: function() {
                     if (this.allDistrictsChecked) {
                         this.districtsInSelection = this.districts;
@@ -125,6 +134,7 @@
                     this.sumOfAuditoriums = 0;
                 },
                 calculateSumOfAuditoriums: function () {
+                    this.sumOfAuditoriums = 0;
                     for (let i=0; i<this.districtsInSelection.length; i++) {
                         if (this.districtsInSelection[i].selected) {
                             this.sumOfAuditoriums = this.sumOfAuditoriums + this.districtsInSelection[i].population;
