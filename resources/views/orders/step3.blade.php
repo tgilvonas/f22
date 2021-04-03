@@ -23,7 +23,7 @@
                     </tr>
                     <tr>
                         <td>{{ __('Pašto dėžučių kiekis') }}</td>
-                        <td>{{ $sumOfPostalBoxes }} {{ __('vnt.') }}</td>
+                        <td>{{ $sumOfAuditoriums }} {{ __('vnt.') }}</td>
                     </tr>
                 </table>
                 <div class="mb-3">

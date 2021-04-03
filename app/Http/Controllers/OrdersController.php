@@ -72,14 +72,14 @@ class OrdersController extends Controller
     {
         $districts = District::whereIn('id', session()->get('order.districts'))->get();
 
-        $sumOfPostalBoxes = 0;
+        $sumOfAuditoriums = 0;
         foreach ($districts as $district) {
-            $sumOfPostalBoxes = $sumOfPostalBoxes + $district->population;
+            $sumOfAuditoriums = $sumOfAuditoriums + $district->population;
         }
 
         return view('orders.step3', [
             'sumOfDistricts' => count($districts),
-            'sumOfPostalBoxes' => $sumOfPostalBoxes,
+            'sumOfAuditoriums' => $sumOfAuditoriums,
         ]);
     }
 }
