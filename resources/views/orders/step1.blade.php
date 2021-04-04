@@ -23,7 +23,7 @@
                     <div class="">Ieškoti:</div>
                 </div>
                 <div class="col-xl-11">
-                    <input type="text" class="form-control" v-model="search_text" v-on:keyup="performSearch">
+                    <input type="text" class="form-control" v-model="search_text" @keyup="performSearch">
                 </div>
             </div>
             <div class="">
@@ -34,8 +34,8 @@
             <div class="wrapper-with-loader">
                 <div class="row">
                     <div class="col-xl-12">
-                        <label class="btn btn-sm btn-warning mr-1" v-for="districtInSelection in districtsInSelection">
-                            <input type="checkbox" v-model="districtInSelection.selected" name="districts[]" :value="districtInSelection.id" @change="unsetDistrictInSelection(districtInSelection)">
+                        <label class="btn btn-sm btn-warning mr-1" v-for="districtInSelection in districtsInSelection" @mousedown="unsetDistrictInSelection(districtInSelection)" @mouseup.prevent>
+                            <input type="checkbox" v-model="districtInSelection.checked" name="districts[]" :value="districtInSelection.id" @change.prevent @click.prevent @mouseup.prevent @mousedown="unsetDistrictInSelection(districtInSelection)">
                             <span v-text="districtInSelection.name"></span>
                         </label>
                         <button class="btn btn-sm btn-danger" type="button" v-if="districtsInSelection.length > 0" @click="clearAllDistrictsInSelection">Išvalyti pasirinkimus</button>
@@ -43,9 +43,9 @@
                 </div>
                 <hr v-if="districtsInSelection.length > 0"/>
                 <div class="row">
-                    <div v-for="district in districts" class="col-xl-3" v-show="!district.selected">
+                    <div v-for="district in districts" class="col-xl-3" v-show="!district.checked">
                         <label>
-                            <input type="checkbox" v-model="district.selected" @change="setDistrictsInSelection(district)"> <span v-text="district.name"></span>
+                            <input type="checkbox" v-model="district.checked" @change="setDistrictsInSelection(district)"> <span v-text="district.name"></span>
                         </label>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
                     if (this.allDistrictsChecked) {
                         this.districtsInSelection = this.districts;
                         for (let i=0; i<this.districtsInSelection.length; i++) {
-                            this.districtsInSelection[i].selected = true;
+                            this.districtsInSelection[i].checked = true;
                         }
                         this.calculateSumOfAuditoriums();
                     } else {
@@ -136,7 +136,7 @@
                 calculateSumOfAuditoriums: function () {
                     this.sumOfAuditoriums = 0;
                     for (let i=0; i<this.districtsInSelection.length; i++) {
-                        if (this.districtsInSelection[i].selected) {
+                        if (this.districtsInSelection[i].checked) {
                             this.sumOfAuditoriums = this.sumOfAuditoriums + this.districtsInSelection[i].population;
                         }
                     }
