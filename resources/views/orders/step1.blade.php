@@ -68,6 +68,7 @@
             data: {
                 districts: [],
                 districtsInSelection: [],
+                idsOfSelectedDistricts: [],
                 allDistrictsChecked: false,
                 sumOfAuditoriums: 0,
                 search_text: '',
@@ -80,9 +81,11 @@
                 getListOfDistricts: function() {
                     let self = this;
                     self.loading = true;
+                    self.getIdsOfSelectedDistricts();
                     axios.get(urls.get_list_of_districts, {
                         params: {
-                            search_text: self.search_text
+                            search_text: self.search_text,
+                            ids_of_selected_districts: self.idsOfSelectedDistricts
                         }
                     }).then(function(response){
                         self.loading = false;
@@ -96,6 +99,12 @@
                     delayTimer = setTimeout(function() {
                         self.getListOfDistricts();
                     }, 1000);
+                },
+                getIdsOfSelectedDistricts: function() {
+                    this.idsOfSelectedDistricts = [];
+                    for (let i=0; i<this.districtsInSelection.length; i++) {
+                        this.idsOfSelectedDistricts.push(this.districtsInSelection[i].id);
+                    }
                 },
                 setDistrictsInSelection: function (district) {
                     for (let i=0; i<this.districts.length; i++) {

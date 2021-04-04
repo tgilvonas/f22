@@ -19,9 +19,11 @@
     <link rel="stylesheet" href="/css/custom-styles.css">
     <script type="text/javascript" src="/js/client-frontend.js"></script>
 
+    {{--
     <script type="text/javascript">
         Vue.config.devtools = true;
     </script>
+    --}}
 </head>
 <body class="antialiased">
 <div class="container">

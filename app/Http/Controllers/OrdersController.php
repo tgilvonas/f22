@@ -28,6 +28,11 @@ class OrdersController extends Controller
             $districtsQueryObject->where('name', 'like', '%'.$searchText.'%');
         }
 
+        $idsOfSelectedDistricts = request()->get('ids_of_selected_districts', []);
+        if (count($idsOfSelectedDistricts)>0) {
+            $districtsQueryObject->whereNotIn('id', $idsOfSelectedDistricts);
+        }
+
         return $districtsQueryObject->get();
     }
 
