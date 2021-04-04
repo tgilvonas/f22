@@ -110,7 +110,11 @@
                         if (this.districtsInSelection[i].name == district.name) {
                             this.districtsInSelection.splice(i, 1);
                             this.calculateSumOfAuditoriums();
-                            return true;
+                        }
+                    }
+                    for (let i=0; i<this.districts.length; i++) {
+                        if (this.districts[i].name == district.name) {
+                            this.districts[i].checked = false;
                         }
                     }
                 },
