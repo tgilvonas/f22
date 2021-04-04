@@ -120,9 +120,10 @@
                 },
                 setAllDistrictsInSelection: function() {
                     if (this.allDistrictsChecked) {
-                        this.districtsInSelection = this.districts;
+                        this.districtsInSelection = JSON.parse(JSON.stringify(this.districts));
                         for (let i=0; i<this.districtsInSelection.length; i++) {
                             this.districtsInSelection[i].checked = true;
+                            this.districts[i].checked = true;
                         }
                         this.calculateSumOfAuditoriums();
                     } else {
