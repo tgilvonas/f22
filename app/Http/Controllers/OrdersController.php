@@ -83,7 +83,7 @@ class OrdersController extends Controller
         }
 
         return view('orders.step3', [
-            'sumOfDistricts' => count($districts),
+            'districts' => $districts->pluck('name')->toArray(),
             'sumOfAuditoriums' => $sumOfAuditoriums,
         ]);
     }

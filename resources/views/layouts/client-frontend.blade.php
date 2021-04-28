@@ -7,12 +7,16 @@
 
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 
-    {{--
     <script type="text/javascript" src="/js/jquery-3.5.1.min.js"></script>
 
+    <script type="text/javascript" src="/fancybox/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+    {{--
     <link rel="stylesheet" href="/jquery-ui-1.12.1.custom/jquery-ui.min.css">
     <script type="text/javascript" src="/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
     --}}
+
     <script type="text/javascript" src="/js/axios.min.js"></script>
     <script type="text/javascript" src="/js/vue/vue.min.js"></script>
 
