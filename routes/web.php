@@ -21,3 +21,10 @@ Route::post('/after-step-2',  [\App\Http\Controllers\OrdersController::class, 'p
 Route::get('/step2-1', [\App\Http\Controllers\OrdersController::class, 'step2Point1'])->name('orders.step2_point_1');
 Route::post('/after-step-2-point-1',  [\App\Http\Controllers\OrdersController::class, 'postAfterStep2Point1'])->name('orders.post_after_step_2_point_1');
 Route::get('/step3',  [\App\Http\Controllers\OrdersController::class, 'step3'])->name('orders.step3');
+
+Route::view('/paslaugu-teikimo-taisykles', 'terms-and-conditions')->name('terms-and-conditions');
+/*
+Route::get('/paslaugu-teikimo-taisykles', function () {
+    return view('terms-and-conditions');
+})->name('terms-and-conditions');
+*/
