@@ -8,7 +8,7 @@
         @csrf
         <div class="row">
             @foreach($orderTypes as $orderType)
-                <div class="col-xl-4">
+                <div class="col-xl-6">
                     <div class="order-type-box js-order-type-box" data-id="{{ $orderType->id }}">
                         <div class="title text-center text-uppercase font-weight-bold">
                             {{ $orderType->title }}
