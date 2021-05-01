@@ -25,6 +25,10 @@
                         <td>{{ __('Auditorija') }}:</td>
                         <td>{{ $sumOfAuditoriums }} {{ __('gyv.') }}</td>
                     </tr>
+                    <tr>
+                        <td>{{ __('Užsakymo suma') }}:</td>
+                        <td><b>{{ $total }} &euro;</b></td>
+                    </tr>
                 </table>
                 <div class="mb-3">
                     {{ __('Užsisakydami skrajučių platinimo paslaugą, Jūs sutinkate su paslaugos teikimo') }} <a href="{{ route('terms-and-conditions') }}" target="_blank">{{ __('taisyklėmis') }}</a>.

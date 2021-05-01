@@ -23,8 +23,3 @@ Route::post('/after-step-2-point-1',  [\App\Http\Controllers\OrdersController::c
 Route::get('/step3',  [\App\Http\Controllers\OrdersController::class, 'step3'])->name('orders.step3');
 
 Route::view('/paslaugu-teikimo-taisykles', 'terms-and-conditions')->name('terms-and-conditions');
-/*
-Route::get('/paslaugu-teikimo-taisykles', function () {
-    return view('terms-and-conditions');
-})->name('terms-and-conditions');
-*/

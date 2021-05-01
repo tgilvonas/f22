@@ -75,16 +75,30 @@ class OrdersController extends Controller
 
     public function step3()
     {
+        $priceOfOneFlyer = 0.014;
+
         $districts = District::whereIn('id', session()->get('order.districts'))->get();
 
         $sumOfAuditoriums = 0;
+        $subTotalOfDistricts = 0;
         foreach ($districts as $district) {
             $sumOfAuditoriums = $sumOfAuditoriums + $district->population;
+            $subTotalOfDistricts = $subTotalOfDistricts + ($priceOfOneFlyer * $district->population * $district->coefficient);
         }
+
+        $orderType = OrderType::find(session()->get('order.order_type'));
+        $orderTypeCoefficient = $orderType->coefficient ?? 1;
+        $orderTypeConstantAdditive = $orderType->constant_additive ?? 0;
+
+        $printFormat = PrintFormat::find(session()->get('order.print_format'));
+        $printFormatCoefficient = $printFormat->coefficient ?? 1;
+
+        $total = $subTotalOfDistricts * $orderTypeCoefficient * $printFormatCoefficient + $orderTypeConstantAdditive;
 
         return view('orders.step3', [
             'districts' => $districts->pluck('name')->toArray(),
             'sumOfAuditoriums' => $sumOfAuditoriums,
+            'total' => number_format($total, 2, ',', ''),
         ]);
     }
 }
